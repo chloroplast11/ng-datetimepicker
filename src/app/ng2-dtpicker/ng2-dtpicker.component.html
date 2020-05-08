@@ -1,0 +1,48 @@
+<input  type="text" 
+		[value]='value ? value : ""'
+		(focus)='onFocus()'
+		(blur)='onBlur()'
+>
+
+<div class='ng2-dtpicker-date-box' *ngIf='isDateBoxOpen' (mousedown)="handleMousedown($event)">
+
+	<!---- date header --->
+	<div class='ng2-dtpicker-date-header'>
+		<button type="button" class='btn-prev' (click)='handleClickPrevMonth()'></button>
+		<button type="button" class='btn-today' (click)='handleClickThisMonth()'></button>
+		<div class='header-label month' (click)='handleClickMonthYearSelect($event, 1)'>
+			<span>{{months[date.month]}}</span><i></i>
+			<div class='ng2-dtpicker-select' *ngIf='selectOpen == 1' appScrollToTarget>
+				<div appOffsetTop
+					 class='ng2-dtpicker-select-option'
+				     *ngFor='let month of months; let i = index'
+					  [class.active]='date.month == i'
+					 (click)='$event.stopPropagation(); handleClickMonthOption(i)'> {{month}} </div>
+			</div>
+		</div>
+		<div class='header-label year' (click)='handleClickMonthYearSelect($event, 2)'>
+			<span>{{date.year}}</span><i></i>
+			<div class='ng2-dtpicker-select' *ngIf='selectOpen == 2' appScrollToTarget>
+				<div appOffsetTop
+				     *ngFor='let year of years'
+				      class='ng2-dtpicker-select-option'
+				     [class.active]='date.year == year'
+					 (click)='$event.stopPropagation(); handleClickYearOption(year)'> {{year}} </div>
+			</div>
+		</div>
+		<button type="button" class='btn-next' (click)='handleClickNextMonth()'></button>
+	</div>
+
+	<!---- calendar --->
+	<div class='ng2-dtpicker-calendar'>
+		<div class='cell cell-header' *ngFor='let weekday of dayOfWeek'>{{weekday}}</div>
+		<div 	class='cell' 
+				*ngFor='let day of days' 
+				[class.disabled]='day.disabled'
+				[class.active]='day.date === this.date.date'
+				(click)='handleClickDate(day.date)'
+		>{{day.date}}</div>
+	</div>
+
+</div>
+
