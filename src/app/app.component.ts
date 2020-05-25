@@ -6,11 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng2-datetimepicker';
-  value = 'qwe';
+	title = 'ng2-datetimepicker';
+	date = 'qwe';
+	time = '9:00';
 
 
-  onchange(e){
-  	console.log(e);
-  }
+	onDateChange(e){
+		console.log(e);
+	}
+
+	onTimeChange(e){
+		console.log(e);
+	}
 }

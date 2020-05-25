@@ -1,0 +1,23 @@
+<input  type="text" 
+		[value]='value ? value : ""'
+		(focus)='onFocus()'
+		(blur)='onBlur()'
+>
+
+<div class='ngx-dtpicker-time-box' *ngIf='isTimeBoxOpen'>
+	<button type="button" 
+			class="btn-prev"
+			(click)='handleClickPrevHour()'></button>
+	<div class='ngx-time-picker-select' appScrollToTarget>
+		<div appOffsetTop
+			 class='ngx-time-picker-select-option' 
+			 *ngFor='let hour of hours' 
+			 [class.active]='hour.isActive'
+			 (click)='handleClickHour(hour.hour)'>
+			{{hour.hour}}
+		</div>
+	</div>
+	<button type="button" 
+			class="btn-next"
+			(click)='handleClickNextHour()'></button>
+</div>

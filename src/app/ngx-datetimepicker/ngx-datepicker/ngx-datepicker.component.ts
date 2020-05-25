@@ -12,23 +12,23 @@ import {
 	EventEmitter
 } from '@angular/core';
 
-import { LangType, i18n } from './i18n';
-import { dtPickerDate, CalendarDay} from './ng2-dtpicker.types';
-import { ScrollToTargetDirective, OffsetTopDirective} from './ng2-dtpicker.directive';
+import { LangType, i18n } from '../i18n';
+import { dtPickerDate, CalendarDay} from '../ngx-datetimepicker.types';
+import { ScrollToTargetDirective, OffsetTopDirective} from '../ngx-datetimepicker.directive';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 
 @Component({
-	selector: 'ng2-dtpicker',
-	templateUrl: './ng2-dtpicker.component.html',
-	styleUrls: ['./ng2-dtpicker.component.scss'],
+	selector: 'ngx-datepicker',
+	templateUrl: './ngx-datepicker.component.html',
+	styleUrls: ['../ngx-datetimepicker.component.scss'],
 	providers: [{
 		provide: NG_VALUE_ACCESSOR,
-		useExisting: forwardRef(() => Ng2DtpickerComponent),
+		useExisting: forwardRef(() => NgxDatepickerComponent),
 		multi: true
 	}]
 })
-export class Ng2DtpickerComponent implements OnInit, ControlValueAccessor {
+export class NgxDatepickerComponent implements OnInit, ControlValueAccessor {
 
 	@ViewChildren(OffsetTopDirective) listItems: QueryList<OffsetTopDirective>;
 	@ViewChild(ScrollToTargetDirective) list: ScrollToTargetDirective;
@@ -159,8 +159,8 @@ export class Ng2DtpickerComponent implements OnInit, ControlValueAccessor {
     handleClickDate(date: number):void{
     	this.date.date = date;
 
-    	let _month = (Array(2).join('0') + (this.date.month+1)).slice(-2);
-    	let _date = (Array(2).join('0') + this.date.date).slice(-2);
+    	let _month = ('00' + (this.date.month+1)).slice(-2);
+    	let _date = ('00' + this.date.date).slice(-2);
     	this.value = this.date.year+'-'+_month+'-'+_date;
     	this._updateNgModel();
     	this.close();

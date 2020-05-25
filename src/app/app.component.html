@@ -1,6 +1,14 @@
-<ng2-dtpicker   [(ngModel)]='value'
-				(change)='onchange($event)'>
+<ngx-datepicker [(ngModel)]='date'
+				(change)='onDateChange($event)'>
 	
-</ng2-dtpicker>
+</ngx-datepicker>
 
-{{value}}
+{{date}}
+
+<br><br><br>
+
+
+<ngx-timepicker [(ngModel)]='time'
+				(change)='onTimeChange($event)'>
+	
+</ngx-timepicker>

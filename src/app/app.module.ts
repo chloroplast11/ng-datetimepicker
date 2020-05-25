@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { Ng2DtpickerModule } from './ng2-dtpicker/ng2-dtpicker.module';
+import { NgxDatetimepickerModule } from './ngx-datetimepicker/ngx-datetimepicker.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { Ng2DtpickerModule } from './ng2-dtpicker/ng2-dtpicker.module';
   imports: [
     BrowserModule,
     FormsModule,
-    Ng2DtpickerModule
+    NgxDatetimepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

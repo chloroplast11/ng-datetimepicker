@@ -11,6 +11,14 @@ export class ScrollToTargetDirective {
 		this._el.nativeElement.scrollTop = value;
 	}
 
+	get scrollTop(): number{
+		return this._el.nativeElement.scrollTop;
+	}
+
+	get offsetTop(): number{
+		return this._el.nativeElement.offsetTop;
+	}
+
 }
 
 
